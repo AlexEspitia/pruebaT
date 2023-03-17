@@ -13,14 +13,10 @@ import { EmpleadoService } from '../services/empleado.service';
 })
 export class SolicitudFormComponent implements OnInit {
 
-  public solicitud: Solicitud ={id:0,codigo:'',descripcion:'',resumen:'',empleado:{id:0}};
+  public solicitud: Solicitud = {id:0, codigo:'', descripcion:'', resumen:'', empleado:{id:0}};
   public titulo: string = "Crear Solicitud";
   public empleadosList: Empleado[] = [];
-  public selected2:Empleado={
-    id: 0, nombre: '',
-    salario: 0
-  };
-  
+  public solicitudesList: Solicitud[] = [];
   
   constructor(private solicitudService: SolicitudService,
     private empleadoService: EmpleadoService,
@@ -28,13 +24,19 @@ export class SolicitudFormComponent implements OnInit {
     private activateRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.cargarSolicitud();
     this.loadEmpleados();
+    this.cargarSolicitud();
+    this.loadSolicitudes()
   }
 
   loadEmpleados(){
     this.empleadoService.getEmpleados().subscribe(data =>{
       this.empleadosList = data
+  });
+  }
+  loadSolicitudes(){
+    this.solicitudService.getSolicitudes().subscribe(data =>{
+      this.solicitudesList = data
   });
   }
   //Edirar solicitud
@@ -43,6 +45,7 @@ export class SolicitudFormComponent implements OnInit {
       let id = params['id']
       if(id){
         this.solicitudService.getSolicitudId(id).subscribe((solicitud)=>this.solicitud = solicitud)
+      
       }
     });
   }
@@ -50,7 +53,7 @@ export class SolicitudFormComponent implements OnInit {
   //crear solicitud
   createS(): void{
     console.log(this.solicitud)
-    if(this.solicitud.codigo!== '' && this.solicitud.descripcion!== ''&& this.solicitud.resumen!== ''&& this.solicitud.empleado!== '' ){
+    if(this.solicitud.codigo!== '' && this.solicitud.descripcion!== ''&& this.solicitud.resumen!== '' ){
     this.solicitudService.createAdd(this.solicitud).subscribe(solicitud =>{
     this.router.navigate(['solicitud'])
     Swal.fire('Nuevo solicitud',`Solicitud ${solicitud.codigo} creado con exito!`, 'success')
@@ -62,9 +65,11 @@ export class SolicitudFormComponent implements OnInit {
   //Update solicitud
   update(): void{
     this.solicitudService.update(this.solicitud).subscribe(solicitud => {
-      this.router.navigate(['/solicitudes'])
+      this.router.navigate(['/solicitud'])
       Swal.fire('Solicitud Actualizada',`Solicitud ${solicitud.codigo} actualizado con exito!`, 'success')
     })
   }
-
+  compareSelect(object1: any, object2: any) {
+    return object1 && object2 && object1.id == object2.id;
+  }
 }

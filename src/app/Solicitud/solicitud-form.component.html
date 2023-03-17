@@ -9,7 +9,6 @@
                 </div>
             </div>
             
-
             <div class="form-group row">
                 <label for="descripcion" class="col-form-laber col-sm-2">Descripcion</label>
                 <div class="col-sm-6">
@@ -27,8 +26,8 @@
             <div class="form-group row">
                 <label for="empleado" class="col-form-laber col-sm-2">Nombre Empleado</label>
                 <div class="col-sm-6">
-                    <select class="form-select form-select-lg" [(ngModel)]= "selected2.id" name="empleado" aria-label="form-select-lg example" >
-                        <!-- <option selected>Seleccione...</option> -->
+                    <select class="form-select form-select-lg" name="empleado" [(ngModel)]= "solicitud.empleado"  aria-label="form-select-lg example" >
+                        <option selected>Seleccione...</option>
                         <option *ngFor="let empleado of empleadosList"  [value]="empleado.id">{{empleado.nombre}}</option>
                       </select>
                 </div>

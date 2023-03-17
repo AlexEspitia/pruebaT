@@ -17,13 +17,7 @@ export class SolicitudComponent implements OnInit {
 
   solicitudes: Solicitud[] = [];
   public solicitud: Solicitud = {id:0,codigo:'',descripcion:'',resumen:'',empleado:{id:0}};
-  nombreEmpleado: any
-  infEmpleado:any=''
-  idSolicitud:number=0
-  data:any
-  public idConsulta: string | null | number = "0";
-  public id = 0;
-  
+ 
   constructor(private solicitudService: SolicitudService,
               private route: ActivatedRoute,
               private Route: Router,
@@ -33,8 +27,9 @@ export class SolicitudComponent implements OnInit {
   ngOnInit() {
     this.solicitudService.getSolicitudes().subscribe(
       solicitudes => this.solicitudes = solicitudes
-     );
+    );
   }
+  
    //Edirar solicitud
    cargarSolicitud(): void{
     this.route.params.subscribe(params =>{
