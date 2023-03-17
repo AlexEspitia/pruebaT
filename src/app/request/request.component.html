@@ -1,0 +1,42 @@
+<div class="card border-primary mb-3" >
+  <div class="card-header">Solicitudes</div>
+  <div class="card-body text-primary">
+    <div class="my-2 text-left">
+      <button class="btn btn-rounded btn-primary" type="button" (click)="setForm(crud.create, dataForm)" >Crear Solicitud</button>
+    </div>
+    <app-form-request
+      class="col-8"
+      *ngIf="enableFrom"
+      [formData]="dataForm"
+      (cancel)="clearForm($event)"
+    ></app-form-request>
+  </div>
+    <table class="table table-bordered table-striped" *ngIf="data.length>0" >
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Descripcion</th>
+                <th>Resumen</th>
+                <th>Nombre Empleado</th>
+                <th>
+                </th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of data">
+                <td>{{item.code}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.summary}}</td>
+                <td>{{item.employee.name}}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm" name="editar" type="button" (click)="setForm(crud.update, item)" >Editar</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger btn-sm" name="eliminar" type="button" (click)="setForm(crud.delete, item)" >Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

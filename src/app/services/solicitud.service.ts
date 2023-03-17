@@ -24,16 +24,11 @@ import { Solicitud } from "../models/solicitud";
       map(response => response as Solicitud[])
     );
   }
-  /* public getSolicitudes(){
-    return this.http.get<Solicitud[]>(`${this.urlEndPoint}`);
-   
-  } */
   
   // Crear Solicitud
   createAdd(solicitud: Solicitud) : Observable <Solicitud> {
     return this.http.post<Solicitud>(this.urlEndPoint, solicitud, { headers: this.httpHeaders }).pipe(
       catchError(e=>{
-        this.router.navigate(['/solicitud'])
         console.error(e.error.mensaje)
         Swal.fire('Error al crear solicitud',e.error.mensaje, 'error');
         return throwError(e);
@@ -45,7 +40,7 @@ import { Solicitud } from "../models/solicitud";
   getSolicitudId(id: any): Observable<Solicitud>{
     return this.http.get<Solicitud>(`${this.urlEndPoint}/${id}`).pipe(
       catchError(e=>{
-        this.router.navigate(['/solicitud'])
+        this.router.navigate(['/solicitudes'])
         console.error(e.error.mensaje)
         Swal.fire('Error al buscar Solicitud',e.error.mensaje, 'error');
         return throwError(e);
