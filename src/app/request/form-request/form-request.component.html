@@ -1,0 +1,27 @@
+<div>
+  <form [formGroup]="form" class="row g-3">
+    <div class="mb-auto col-3">
+      <label for="code" class="form-label">codigo</label>
+      <input type="email" class="form-control" formControlName="code" id="code" placeholder="codigo">
+    </div>
+    <div class="mb-auto col-3">
+      <label for="description" class="form-label">Descripción</label>
+      <input type="email" class="form-control" formControlName="description" id="description" placeholder="description">
+    </div>
+    <div class="mb-auto col-3">
+      <label for="summary" class="form-label">Resumen</label>
+      <input type="email" class="form-control" formControlName="summary" id="summary" placeholder="Resumen">
+    </div>
+    <div class="mb-auto col-3">
+      <label for="employee" class="form-label">Empleado</label>
+      <select class="form-select form-select-lg"  name="empleado" formControlName="employee" aria-label="form-select-lg example" >
+        <option selected>Seleccione...</option>
+        <option *ngFor="let employee of employeeList"  [ngValue]="employee">{{employee.name}}</option>
+      </select>
+    </div>
+    <div class="mb-auto col-3" >
+        <button class="btn btn-primary btn-sm" role="button" (click)="saveForm()">Crear</button>
+        <button class="btn btn-danger btn-sm" role="button" (click)="cancelForm()">Cancelar</button>
+    </div>
+  </form>
+</div>

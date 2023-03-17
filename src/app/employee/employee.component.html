@@ -1,0 +1,41 @@
+<div class="card border-primary mb-3" >
+  <div class="card-header">employees</div>
+  <div class="card-body text-primary">
+    <div class="my-2 text-left col-4">
+        <button class="btn btn-rounded btn-primary" type="button" (click)="setForm(crud.create, dataForm)" >Crear employee</button>
+    </div>
+    <app-form-employee
+      class="col-8"
+      *ngIf="enableFrom"
+      [formData]="dataForm"
+      (cancel)="clearForm($event)"></app-form-employee>
+  </div>
+  <table class="table table-bordered table-striped" >
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Salario</th>
+            <th>
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of data; index as id;">
+            <td>{{employee.id}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.salary}}</td>
+            <td>
+                <button class="btn btn-primary btn-sm" name="editar" type="button" (click)="setForm(crud.update, employee)" >Editar</button>
+            </td>
+            <td>
+                <button class="btn btn-danger btn-sm" name="eliminar" type="button" (click)="setForm(crud.delete, employee)" >Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
+
