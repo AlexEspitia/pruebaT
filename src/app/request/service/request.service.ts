@@ -8,7 +8,7 @@ import { DataApiService } from 'src/app/services/data-api.service';
 })
 export class RequestService {
 
-  private _endpoint: string = 'Request';
+  private _endpoint: string = '/requests';
 
   constructor(private _dataApi: DataApiService) { }
 

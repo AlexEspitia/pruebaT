@@ -7,7 +7,8 @@ import { DataApiService } from 'src/app/services/data-api.service';
   providedIn: 'root'
 })
 export class EmployeeService {
-  private _endpoint: string = 'employees';
+  
+  private _endpoint: string = '/employees';
 
   constructor(private _dataApi: DataApiService) { }
 

@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HeaderComponent implements OnInit {
-  curso="Angular con Spring";
-  estudiante= "Alexander Espitia";
+  title="Angular con Spring";
+  autor= "Alexander Espitia";
   constructor() { }
 
   ngOnInit(): void {
