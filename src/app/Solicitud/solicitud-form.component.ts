@@ -70,6 +70,9 @@ export class SolicitudFormComponent implements OnInit {
     })
   }
   compareSelect(object1: any, object2: any) {
+    if (object1===undefined && object2===undefined) {
+      return true;
+    }
     return object1 && object2 && object1.id == object2.id;
   }
 }

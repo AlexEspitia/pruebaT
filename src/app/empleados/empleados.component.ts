@@ -14,6 +14,10 @@ export class EmpleadosComponent implements OnInit {
   
   constructor(private empleadoService: EmpleadoService) { }
 
+ /*  @ViewChild(MatPaginator)paginator!: MatPaginator;
+  @ViewChild(MatSort)sort!: MatSort; */
+
+
   ngOnInit() {
     this.empleadoService.getEmpleados().subscribe(
       empleados => this.empleados = empleados

@@ -24,11 +24,11 @@
             </div>
 
             <div class="form-group row">
-                <label for="empleado" class="col-form-laber col-sm-2">Nombre Empleado</label>
+                <label for="empleado" class="col-form-laber col-sm-2">Empleado</label>
                 <div class="col-sm-6">
-                    <select class="form-select form-select-lg" name="empleado" [(ngModel)]= "solicitud.empleado"  aria-label="form-select-lg example" >
-                        <option selected>Seleccione...</option>
-                        <option *ngFor="let empleado of empleadosList"  [value]="empleado.id">{{empleado.nombre}}</option>
+                    <select [compareWith]="compareSelect" class="form-select " name="empleado" [(ngModel)]= "solicitud.empleado"  style=" width:440px;" >
+                        <option [ngValue]="undefined">--seleccionar un empleado--</option>
+                        <option *ngFor="let empleado of empleadosList"  [ngValue]="empleado">{{empleado.nombre}}</option>
                       </select>
                 </div>
             </div>
